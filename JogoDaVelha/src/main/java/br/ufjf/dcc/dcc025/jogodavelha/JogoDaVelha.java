@@ -3,8 +3,7 @@
  */
 package br.ufjf.dcc.dcc025.jogodavelha;
 
-/**
- *
+/*
  * @author lucas
  */
 import java.util.Scanner;
@@ -45,8 +44,8 @@ public class JogoDaVelha {
     private void escolherModo() {
         System.out.println(banner);
         System.out.println("Escolha o modo de jogo:");
-        System.out.println("1 - Solo");
-        System.out.println("2 - Multijogador");
+        System.out.println("1 - Jogador vs Bot");
+        System.out.println("2 - Jogador vs Jogador");
         int escolha = scanner.nextInt();
         scanner.nextLine();
         modoSolo = (escolha == 1);

@@ -4,7 +4,7 @@
  */
 package br.ufjf.dcc.dcc025.jogodavelha;
 
-/**
+/*
  *
  * @author lucas
  */
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class Tabuleiro {
     private HashMap<String, Character> tabuleiro;
+
     private ArrayList<String> historico;
 
     public Tabuleiro() {
