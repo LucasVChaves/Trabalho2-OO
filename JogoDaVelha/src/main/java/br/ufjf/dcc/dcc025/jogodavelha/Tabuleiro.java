@@ -55,6 +55,16 @@ public class Tabuleiro {
         return historico;
     }
 
+    public void printHistorico() {
+        System.out.println("Histórico de Jogadas:");
+        int rodadas = 1;
+        for (String jogada: historico) {
+            System.out.println("Rodada " + rodadas + " - " + jogada);
+            rodadas++;
+        }
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+    }
+
     public char get(String posicao) {
         return tabuleiro.getOrDefault(posicao, ' ');
     }

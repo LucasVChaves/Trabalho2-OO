@@ -93,7 +93,7 @@ public class JogoDaVelha {
                 }
             }
         }
-        System.out.println("Histórico de jogadas: " + tabuleiro.getHistorico());
+        tabuleiro.printHistorico();
     }
 
     private void jogadaComputador() {
