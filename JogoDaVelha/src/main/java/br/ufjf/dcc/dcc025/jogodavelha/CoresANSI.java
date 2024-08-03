@@ -5,7 +5,8 @@ public enum CoresANSI {
     RED("\u001B[31m"),
     PURPLE("\u001B[35m"),
     BLUE("\u001B[34m"),
-    GREEN("\u001B[32m");
+    GREEN("\u001B[32m"),
+    RED_BACKGROUND("\u001B[41m");
 
     private String codigo;
 

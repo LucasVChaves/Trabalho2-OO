@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 //TODO: Talvez exportar toda a logica de jogada e simbolo para uma classe Jogador
-
 public class JogoDaVelha {
 
     private Tabuleiro tabuleiro;
@@ -74,7 +73,7 @@ public class JogoDaVelha {
             } else {
                 System.out.println(CoresANSI.GREEN.getCode() + "Jogador " + jogadorAtual + ", escolha sua jogada no formato (x,y): " + CoresANSI.RESET.getCode());
                 String entrada = scanner.nextLine();
-                int[] posicao = obterPosicao(entrada);
+                int[] posicao = obterPosicao(entrada.trim());
 
                 if (posicao != null && tabuleiro.realizarJogada(posicao[0], posicao[1], jogadorAtual)) {
                     if (verificarVencedor()) {
@@ -89,7 +88,7 @@ public class JogoDaVelha {
                         trocarJogador();
                     }
                 } else {
-                    System.out.println("Jogada inválida! Tente novamente.");
+                    System.out.println(CoresANSI.RED_BACKGROUND.getCode() + "Jogada inválida! Tente novamente." + CoresANSI.RESET.getCode());
                 }
             }
         }
