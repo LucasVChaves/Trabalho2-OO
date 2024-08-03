@@ -21,13 +21,6 @@ public class JogoDaVelha {
     private boolean modoSolo;
     private Random random;
 
-    // Codigos de cor ANSI para imprimir bonitinho
-    private static String ANSI_RESET = "\u001B[0m";
-    private static String ANSI_RED = "\u001B[31m";
-    private static String ANSI_GREEN = "\u001B[32m";
-    private static String ANSI_BLUE = "\u001B[34m";
-    private static String ANSI_PURPLE = "\u001B[35m";
-
     private String banner = "       __    ______     _______   ______      _______       ___        ____    ____  _______  __       __    __       ___      \n"
             + "      |  |  /  __  \\   /  _____| /  __  \\    |       \\     /   \\       \\   \\  /   / |   ____||  |     |  |  |  |     /   \\     \n"
             + "      |  | |  |  |  | |  |  __  |  |  |  |   |  .--.  |   /  ^  \\       \\   \\/   /  |  |__   |  |     |  |__|  |    /  ^  \\    \n"
@@ -49,17 +42,17 @@ public class JogoDaVelha {
     }
 
     private void escolherModo() {
-        System.out.println(ANSI_RED + banner + ANSI_RESET);
+        System.out.println(CoresANSI.RED.getCode() + banner + CoresANSI.RESET.getCode());
         System.out.println("Escolha o modo de jogo:");
-        System.out.println(ANSI_BLUE + "1 - Jogador vs Bot" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "2 - Jogador vs Jogador" + ANSI_RESET);
+        System.out.println(CoresANSI.BLUE.getCode() + "1 - Jogador vs Bot" + CoresANSI.RESET.getCode());
+        System.out.println(CoresANSI.GREEN.getCode() + "2 - Jogador vs Jogador" + CoresANSI.RESET.getCode());
         int escolha = scanner.nextInt();
         scanner.nextLine();
         modoSolo = (escolha == 1);
     }
 
     private void escolherSimbolo() {
-        System.out.println(ANSI_PURPLE + "Escolha seu símbolo (X ou O):" + ANSI_RESET);
+        System.out.println(CoresANSI.PURPLE.getCode() + "Escolha seu símbolo (X ou O):" + CoresANSI.RESET.getCode());
         jogadorHumano = scanner.nextLine().toUpperCase().charAt(0);
         if (jogadorHumano != 'X' && jogadorHumano != 'O') {
             jogadorHumano = 'X';
@@ -79,18 +72,18 @@ public class JogoDaVelha {
             if (modoSolo && jogadorAtual == jogadorComputador) {
                 jogadaComputador();
             } else {
-                System.out.println(ANSI_GREEN + "Jogador " + jogadorAtual + ", escolha sua jogada no formato (x,y): " + ANSI_RESET);
+                System.out.println(CoresANSI.GREEN.getCode() + "Jogador " + jogadorAtual + ", escolha sua jogada no formato (x,y): " + CoresANSI.RESET.getCode());
                 String entrada = scanner.nextLine();
                 int[] posicao = obterPosicao(entrada);
 
                 if (posicao != null && tabuleiro.realizarJogada(posicao[0], posicao[1], jogadorAtual)) {
                     if (verificarVencedor()) {
                         tabuleiro.imprimirTabuleiro();
-                        System.out.println(ANSI_GREEN + "Jogador " + jogadorAtual + " venceu!" + ANSI_RESET);
+                        System.out.println(CoresANSI.GREEN.getCode() + "Jogador " + jogadorAtual + " venceu!" + CoresANSI.RESET.getCode());
                         jogoAtivo = false;
                     } else if (tabuleiro.getHistorico().size() == 9) {
                         tabuleiro.imprimirTabuleiro();
-                        System.out.println(ANSI_BLUE + "Empate!" + ANSI_RESET);
+                        System.out.println(CoresANSI.BLUE.getCode() + "Empate!" + CoresANSI.RESET.getCode());
                         jogoAtivo = false;
                     } else {
                         trocarJogador();
@@ -110,14 +103,14 @@ public class JogoDaVelha {
             coluna = random.nextInt(3) + 1;
         } while (!tabuleiro.realizarJogada(linha, coluna, jogadorComputador));
 
-        System.out.println(ANSI_RED + "Computador jogou em (" + linha + "," + coluna + ")" + ANSI_RESET);
+        System.out.println(CoresANSI.RED.getCode() + "Computador jogou em (" + linha + "," + coluna + ")" + CoresANSI.RESET.getCode());
 
         if (verificarVencedor()) {
             tabuleiro.imprimirTabuleiro();
-            System.out.println(ANSI_GREEN + "Jogador " + jogadorAtual + " venceu!" + ANSI_RESET);
+            System.out.println(CoresANSI.GREEN.getCode() + "Jogador " + jogadorAtual + " venceu!" + CoresANSI.RESET.getCode());
         } else if (tabuleiro.getHistorico().size() == 9) {
             tabuleiro.imprimirTabuleiro();
-            System.out.println(ANSI_BLUE + "Empate!" + ANSI_RESET);
+            System.out.println(CoresANSI.BLUE.getCode() + "Empate!" + CoresANSI.RESET.getCode());
         } else {
             trocarJogador();
         }

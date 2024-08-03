@@ -56,13 +56,18 @@ public class Tabuleiro {
     }
 
     public void printHistorico() {
-        System.out.println("Histórico de Jogadas:");
+        System.out.println(CoresANSI.PURPLE.getCode() + "=-=-=-=-=-=-=-=-=-=-=-=-=" + CoresANSI.RESET.getCode());
+        System.out.println(CoresANSI.PURPLE.getCode() + "Histórico de Jogadas:" + CoresANSI.RESET.getCode());
         int rodadas = 1;
         for (String jogada: historico) {
-            System.out.println("Rodada " + rodadas + " - " + jogada);
+            if(rodadas % 2 == 0) {
+                System.out.println(CoresANSI.RED.getCode() + "Rodada " + rodadas + " - " + jogada + CoresANSI.RESET.getCode());
+            } else {
+                System.out.println(CoresANSI.GREEN.getCode() + "Rodada " + rodadas + " - " + jogada + CoresANSI.RESET.getCode());
+            }
             rodadas++;
         }
-        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+        System.out.println(CoresANSI.PURPLE.getCode() + "=-=-=-=-=-=-=-=-=-=-=-=-=" + CoresANSI.RESET.getCode());
     }
 
     public char get(String posicao) {
